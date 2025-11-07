@@ -1,0 +1,519 @@
+/* ====== Ogólne ====== */
+body {
+  margin: 0;
+  font-family: "Poppins", Arial, sans-serif;
+  background-color: #000;
+  color: #fff;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, p {
+  margin: 0;
+  padding: 0;
+}
+
+section {
+  padding: 60px 20px;
+  text-align: center;
+}
+
+/* ====== Nagłówek ====== */
+header {
+  position: relative;
+  height: 55vh;
+  overflow: hidden;
+  color: white;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 🔸 tło w osobnej warstwie — z ruchem i rozmyciem */
+header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url('accord1.jpg') center/cover no-repeat;
+  background-attachment: fixed;
+  filter: blur(1px) brightness(0.55);
+  animation: moveBackground 40s ease-in-out infinite alternate,
+             lightSweepBg 6s linear infinite; /* ✨ refleks na tle */
+  z-index: 0;
+}
+
+/* 🔸 efekt światła przesuwającego się po tle */
+@keyframes lightSweepBg {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* 🔸 ruch tła (subtelne przesunięcie i skalowanie) */
+@keyframes moveBackground {
+  0% { transform: scale(1) translate(0, 0); }
+  50% { transform: scale(1.05) translate(-2%, 2%); }
+  100% { transform: scale(1) translate(0, 0); }
+}
+
+
+/* 🔸 napis główny z efektem błysku */
+header h1 {
+  font-size: 3em;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  font-weight: 800;
+  color: #fff;
+  position: relative;
+  z-index: 2;
+  overflow: hidden;
+  text-shadow: 0 0 15px rgba(255, 120, 30, 0.8);
+}
+/* ✨ błysk przechodzący przez napis */
+header h1::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.7) 50%,
+    transparent 100%
+  );
+  animation: shine 4s ease-in-out infinite;
+}
+@keyframes shine {
+  0% { left: -100%; }
+  50% { left: 100%; }
+  100% { left: 100%; }
+}
+/* 🔸 napis pod głównym tytułem */
+header p {
+  font-size: 1.25em; /* lekko większe */
+  margin-top: 10px;
+  max-width: 700px;
+  color: #ddd;
+  position: relative;
+  z-index: 2;
+}
+/* 🔸 pasek z instrumentami (wolniejszy ruch i większe litery) */
+.banner-text span {
+  display: inline-block;
+  padding-left: 100%;
+  animation: moveBanner 18s linear infinite; /* wolniej */
+  color: #ff6600;
+  font-weight: bold;
+  font-size: 1.35em;
+  text-shadow: 0 0 10px rgba(255, 100, 0, 0.7);
+}
+
+@keyframes moveBanner {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+/* ✨ ruchomy refleks na całym nagłówku */
+header::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 200, 0.25) 40%,
+    rgba(255, 255, 255, 0.4) 50%,
+    rgba(255, 200, 150, 0.25) 60%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  animation: sweepAcross 8s linear infinite;
+  z-index: 2;
+  pointer-events: none;
+  mix-blend-mode: screen;
+  opacity: 0.4; /* 🔸 mocniejszy efekt (zwiększono z 0.6 do 0.9) */
+  filter: blur(2px); /* 🔸 lekko rozmyty, żeby wyglądał jak prawdziwe światło */
+}
+
+/* 🔸 animacja przechodzenia refleksu z prawej do lewej */
+@keyframes sweepAcross {
+  0% { transform: translateX(100%) rotate(0deg); }
+  50% { transform: translateX(-50%) rotate(0deg); }
+  100% { transform: translateX(-100%) rotate(0deg); }
+}
+
+
+
+
+
+/* 🔸 przycisk CTA */
+.cta-button {
+  display: inline-block;
+  margin-top: 25px;
+  padding: 12px 28px;
+  background: #ff6600;
+  color: #fff;
+  font-weight: bold;
+  border-radius: 40px;
+  text-decoration: none;
+  box-shadow: 0 0 15px #ff6600;
+  animation: pulse 1.8s infinite;
+  font-size: 1em;
+  position: relative;
+  z-index: 2;
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 10px #ff6600; transform: scale(1); }
+  50% { box-shadow: 0 0 25px #ff3300; transform: scale(1.05); }
+  100% { box-shadow: 0 0 10px #ff6600; transform: scale(1); }
+}
+
+/* 🔸 górny pasek z instrumentami */
+.banner-text {
+  position: absolute;
+  bottom: 45px;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  z-index: 2;
+}
+
+.banner-text span {
+  display: inline-block;
+  padding-left: 100%;
+  animation: moveBanner 22s linear infinite;
+  color: #ff6600;
+  font-weight: bold;
+  font-size: 1.5em;
+  text-shadow: 0 0 12px rgba(255, 100, 0, 0.7);
+}
+
+@keyframes moveBanner {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+
+/* 🔸 dolny pasek (Facebook + Muzyka na żywo) */
+.running-text {
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  background: #000;
+  border-top: 1px solid #222;
+  padding: 8px 0;
+}
+
+.running-text span {
+  display: inline-block;
+  padding-left: 100%;
+  animation: moveFooter 22s linear infinite;
+  color: #ffaa33;
+  font-weight: bold;
+  font-size: 1.50em;
+  text-shadow: 0 0 8px rgba(255, 180, 60, 0.7);
+}
+
+@keyframes moveFooter {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+
+/* ====== Nawigacja ====== */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  /* 🔸 półprzezroczyste, ciemne tło z rozmyciem */
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px); /* dla Safari */
+  
+  text-align: center;
+  padding: 12px 0;
+  z-index: 100;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  transition: background 0.4s ease;
+}
+
+/* 🔸 kolor i animacja linków */
+nav a {
+  color: #fff;
+  text-decoration: none;
+  margin: 0 18px;
+  font-weight: bold;
+  transition: color 0.3s, text-shadow 0.3s;
+}
+
+nav a:hover {
+  color: #ff6600;
+  text-shadow: 0 0 10px #ff3300;
+}
+
+
+body {
+  scroll-padding-top: 70px;
+}
+
+/* ====== Sekcje ====== */
+section h2 {
+  font-size: 2em;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  text-shadow: 0 0 10px #ff6600;
+}
+
+.oferta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+}
+
+.oferta div {
+  position: relative; /* konieczne, żeby działał ::before */
+  border-radius: 15px;
+  padding: 20px;
+  width: 260px;
+  min-height: 100px;
+  color: #fff;
+  overflow: hidden;
+  text-align: center;
+  transition: transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 0 10px #111;
+}
+
+/* 🔸 tło indywidualne dla każdego kafelka */
+.oferta div:nth-child(1) {
+  background: url('background.jpg') center/cover no-repeat;
+}
+.oferta div:nth-child(2) {
+  background: url('background.jpg') center/cover no-repeat;
+}
+.oferta div:nth-child(3) {
+  background: url('background.jpg') center/cover no-repeat;
+}
+
+/* 🔸 przyciemnienie i rozmycie (overlay) */
+.oferta div::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: linear-gradient(to bottom right, rgba(0,0,0,0.7), rgba(0,0,0,0.4));
+  backdrop-filter: blur(2px);
+  border-radius: 15px;
+  z-index: 0;
+}
+
+/* 🔸 tekst nad przyciemnieniem */
+.oferta div h3,
+.oferta div p {
+  position: relative;
+  z-index: 1;
+}
+
+/* 🔸 efekt hover */
+.oferta div:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px rgba(255, 102, 0, 0.5);
+}
+/* ====== Galeria ====== */
+.galeria {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 22px;
+  row-gap: 8px; 
+}
+
+
+.galeria img {
+  width: 220px;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 10px;
+  transition: transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 0 10px #000;
+}
+
+.galeria img:hover {
+  transform: scale(1.06);
+  box-shadow: 0 0 20px #ff6600;
+}
+
+/* ====== Kontakt ====== */
+#kontakt p {
+  line-height: 1.6em;
+  font-size: 1.05em;
+}
+
+.social-icons {
+  margin-top: 20px;
+}
+
+.social-icons a img {
+  filter: drop-shadow(0 0 6px #ff6600);
+  transition: transform 0.3s;
+}
+
+.social-icons a img:hover {
+  transform: scale(1.1);
+}
+
+/* ====== Stopka ====== */
+footer {
+  background: #111;
+  text-align: center;
+  padding: 25px;
+  font-size: 0.9em;
+  color: #aaa;
+  border-top: 1px solid #222;
+}
+
+/* ====== Animacje sekcji ====== */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+section {
+  animation: fadeInUp 0.8s ease both;
+}
+iframe {
+  position: relative;
+  z-index: 10;
+  display: block;
+  margin: 20px auto;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(255, 102, 0, 0.5);
+}
+.video-container {
+  position: relative;
+  width: 100%;
+  max-width: 560px;
+  margin: 0 auto;
+  cursor: pointer;
+}
+
+.video-container img {
+  width: 100%;
+  border-radius: 10px;
+  display: block;
+  box-shadow: 0 0 15px rgba(255, 102, 0, 0.5);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.video-container:hover img {
+  transform: scale(1.03);
+  box-shadow: 0 0 25px rgba(255, 102, 0, 0.8);
+}
+
+.play-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 3em;
+  color: white;
+  text-shadow: 0 0 15px rgba(0,0,0,0.8);
+  pointer-events: none;
+}
+/* ====== SEKCJA FILMY ====== */
+#filmy {
+  text-align: center;
+  padding: 70px 20px;
+  background: black;
+  color: white;
+}
+
+#filmy h2 {
+  font-size: 2.2rem;
+  color: #ff6600;
+  margin-bottom: 40px;
+  text-shadow: 0 0 15px rgba(255, 102, 0, 0.8);
+}
+
+/* Grid na filmy */
+.filmy-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 40px;
+  justify-items: center;
+  align-items: start;
+  max-width: 1100px;
+  margin: 0 auto 50px auto;
+}
+
+.video-thumb {
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  border-radius: 15px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.video-thumb:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 25px rgba(255, 102, 0, 0.6);
+}
+
+.video-thumb img {
+  width: 100%;
+  display: block;
+  border-radius: 10px;
+  filter: brightness(0.9);
+  transition: filter 0.3s;
+}
+.video-thumb:hover img {
+  filter: brightness(1);
+}
+
+.play-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80px;
+  height: 80px;
+  background: rgba(255, 102, 0, 0.9);
+  border-radius: 50%;
+  font-size: 40px;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s;
+}
+.video-thumb:hover .play-button {
+  background: rgba(255, 150, 0, 1);
+}
+
+.video-thumb p {
+  margin-top: 10px;
+  color: #ccc;
+  font-size: 1rem;
+}
+
+/* Przycisk YouTube */
+.youtube-btn {
+  display: inline-block;
+  background: #ff6600;
+  color: white;
+  padding: 12px 25px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  box-shadow: 0 0 10px #ff6600;
+  transition: all 0.3s ease;
+}
+.youtube-btn:hover {
+  background: #ff8533;
+  box-shadow: 0 0 20px #ff6600;
+}
+
+

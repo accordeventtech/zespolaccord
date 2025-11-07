@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zespół ACCORD – Filmy i Nagrania Demo</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <div class="header-bg"></div>
+  <h1>🎥 FILMY / DEMO</h1>
+  <p>Zobacz nas w akcji – muzyka na żywo, koncerty i wesele z zespołem ACCORD</p>
+</header>
+
+<nav>
+  <a href="ZESPÓŁ.html">← Powrót na stronę główną</a>
+</nav>
+
+<section id="filmy">
+  <h2>🎬 Nasze filmy</h2>
+
+  <div class="filmy-grid">
+
+    <!-- 🎥 Pierwszy film -->
+    <div class="video-thumb" data-video="xYQsNp5vevE">
+      <img src="https://img.youtube.com/vi/xYQsNp5vevE/hqdefault.jpg" alt="Zespół ACCORD – demo 1">
+      <div class="play-button">▶</div>
+      <p>🎶 Zespół ACCORD – występ Konin</p>
+    </div>
+
+    <!-- 🎥 Drugi film -->
+    <div class="video-thumb" data-video="1VaYi3asiWU">
+      <img src="https://img.youtube.com/vi/1VaYi3asiWU/hqdefault.jpg" alt="Zespół ACCORD – demo 2">
+      <div class="play-button">▶</div>
+      <p>🎤 Zespół ACCORD – muzyka na żywo</p>
+    </div>
+
+  </div>
+
+  <!-- 🔗 Jeden przycisk na dole -->
+  <div style="text-align:center; margin-top:30px;">
+    <a href="https://www.youtube.com/results?search_query=accord+konin"
+       target="_blank"
+       class="youtube-btn">🔗 Zobacz więcej nagrań na YouTube</a>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 ZESPÓŁ ACCORD</p>
+</footer>
+
+<script>
+document.querySelectorAll('.video-thumb').forEach(thumb => {
+  thumb.addEventListener('click', () => {
+    const videoId = thumb.getAttribute('data-video');
+    thumb.innerHTML = `
+      <iframe width="100%" height="315"
+        src="https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1"
+        title="YouTube video player"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen></iframe>
+    `;
+  });
+});
+</script>
+
+</body>
+</html>
