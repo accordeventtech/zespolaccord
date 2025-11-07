@@ -35,7 +35,7 @@ header::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: url('accord1.jpg') center/cover no-repeat;
+  background: url('accord1.JPG') center/cover no-repeat;
   background-attachment: fixed;
   filter: blur(1px) brightness(0.55);
   animation: moveBackground 40s ease-in-out infinite alternate,
@@ -515,5 +515,6 @@ iframe {
   background: #ff8533;
   box-shadow: 0 0 20px #ff6600;
 }
+
 
 
